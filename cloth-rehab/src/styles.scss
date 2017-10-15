@@ -1,0 +1,28 @@
+$lt_green: rgb(176, 204, 156);
+$drk_green: rgb(61, 116, 84);
+$font: 'Work Sans', sans-serif;
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  min-height: 100%;
+  margin: 0;
+  overflow: auto;
+  font-family: $font;
+}
+
+.loader {
+  position: absolute;
+  display: block;
+  top: 25vh;
+  left: 0;
+  right: 0;
+  margin: auto;
+  text-align: center;
+  font-size: 10em;
+  color: $drk_green;
+}

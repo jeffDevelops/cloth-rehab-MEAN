@@ -1,0 +1,27 @@
+<div class="error_message"
+  *ngIf="authService.accessDenied">
+  <p>
+    Access Denied. If you are not a site administrator, continue to the site
+    <a href="#">here</a>.
+  </p>
+</div>
+
+<img id="logo" src="/assets/cloth_rehab.png" alt="Cloth Rehab Logo" />
+<h1>Cloth Rehab</h1>
+<h2>Admin Portal</h2>
+
+<button
+  id="auth_button"
+  *ngIf="!authService.isAuthenticated()"
+  (click)="authService.login()">
+    Log In
+</button>
+
+<button
+  id="auth_button"
+  *ngIf="authService.isAuthenticated()"
+  (click)="authService.login()">
+    Log Out
+</button>
+
+<router-outlet></router-outlet>

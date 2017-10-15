@@ -1,0 +1,87 @@
+$lt_green: rgb(176, 204, 156);
+$drk_green: rgb(61, 116, 84);
+$red: rgb(192, 72, 63);
+$font: 'Work Sans', sans-serif;
+
+.error_message {
+  height: 50px;
+  background: $red;
+  padding: 23px 0 0 0;
+  p {
+    margin: 0;
+    color: #fff;
+    font-size: 1.1em;
+    text-align: center;
+    a {
+      color: #fff;
+    }
+  }
+}
+
+#logo {
+  display: block;
+  min-width: 200px;
+  max-width: 500px;
+  width: 50%;
+  margin: 10vh auto 0 auto;
+}
+
+h1 {
+  margin-bottom: 0;
+  text-align: center;
+  font-family: $font;
+  text-transform: lowercase;
+  font-size: 2em;
+  font-weight: 400;
+  letter-spacing: .1em;
+  color: $lt_green;
+}
+
+h2 {
+  margin: 0;
+  text-align: center;
+  font-family: $font;
+  text-transform: uppercase;
+  font-size: 1em;
+  font-weight: 600;
+  letter-spacing: .1em;
+  color: $drk_green;
+}
+
+@media (min-width: 600px) and (max-width: 999px) {
+  h1 {
+    font-size: 3em;
+  }
+  h2 {
+    font-size: 2em;
+  }
+}
+
+@media (min-width: 1000px) {
+  h1 {
+    font-size: 4em;
+  }
+  h2 {
+    font-size: 2em;
+  }
+}
+
+#auth_button {
+  display: block;
+  margin: 75px auto;
+  border: 3px solid $drk_green;
+  border-radius: 4px;
+  background: #fff;
+  padding: 20px 40px;
+  color: $drk_green;
+  font-family: $font;
+  font-size: 1.5em;
+  text-transform: lowercase;
+  transition: all .2s;
+  outline: none;
+  &:hover {
+    color: #fff;
+    background: $drk_green;
+    transition: all .4s;
+  }
+}

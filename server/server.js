@@ -7,10 +7,6 @@ app.get('/', (req, res) => {
   res.send('Hello, world');
 });
 
-app.get('/admin', (req, res) => {
-  res.send('Hello Vivian');
-});
-
 app.listen(port, () => {
   console.log('listening on port 3000');
 });
