@@ -1,5 +1,5 @@
 <div class="error_message"
-  *ngIf="authService.accessDenied">
+  *ngIf="auth.accessDenied">
   <p>
     Access Denied. If you are not a site administrator, continue to the site
     <a href="#">here</a>.
@@ -10,18 +10,17 @@
 <h1>Cloth Rehab</h1>
 <h2>Admin Portal</h2>
 
-<button
-  id="auth_button"
-  *ngIf="!authService.isAuthenticated()"
-  (click)="authService.login()">
-    Log In
-</button>
+<div class="button_container">
+  <button
+    id="auth_button"
+    *ngIf="!auth.isAuthenticated()"
+    (click)="auth.login()">
+      Log In
+  </button>
 
-<button
-  id="auth_button"
-  *ngIf="authService.isAuthenticated()"
-  (click)="authService.login()">
-    Log Out
-</button>
+  <button id="site_home_button">
+    <a routerLink="#">go to site</a>
+  </button>
+</div>
 
 <router-outlet></router-outlet>

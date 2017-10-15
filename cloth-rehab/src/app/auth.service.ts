@@ -10,7 +10,7 @@ export class AuthService {
     domain: 'clothrehab.auth0.com',
     responseType: 'token id_token',
     audience: 'https://clothrehab.auth0.com/userinfo',
-    redirectUri: 'http://localhost:4200/admin/authenticated',
+    redirectUri: 'http://localhost:4200/callback',
     scope: 'openid'
   });
 
@@ -27,7 +27,7 @@ export class AuthService {
       if (authResult && authResult.accessToken && authResult.idToken) {
         window.location.hash = '';
         this.setSession(authResult);
-        this.router.navigate(['/admin/authenticated']);
+        this.router.navigate(['/admin/home']);
       } else if (err) {
         this.router.navigate(['/admin']);
         console.log(err);
@@ -49,7 +49,7 @@ export class AuthService {
   public logout(): void {
     localStorage.removeItem('access_token');
     localStorage.removeItem('id_token');
-    localStorage.removeItem('expiresAt');
+    localStorage.removeItem('expires_at');
     //go back to admin auth route
     this.router.navigate(['/admin']);
   }
@@ -57,51 +57,10 @@ export class AuthService {
   public isAuthenticated(): boolean {
     //check whether current time is past the access_token's expiration time
     const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
-    return new Date().getTime < expiresAt; //returns true if less than localStorage's expiresAt time
+    return new Date().getTime() < expiresAt; //returns true if less than localStorage's expiresAt time
   }
 
   public displayAuthError(): void {
     this.accessDenied = true;
   }
 }
-
-// import { tokenNotExpired } from 'angular2-jwt';
-// import { Router } from '@angular/router';
-//
-// declare var Auth0Lock: any;
-//
-// @Injectable()
-// export class AuthService {
-//
-//   lock = new Auth0Lock('AUTH0_CLIENT_ID', 'AUTH0_DOMAIN');
-//
-//   constructor(private router: Router) {
-//     this.lock.on('authenticated', (authResult: any) => {
-//       localStorage.setItem('id_token', authResult.idToken);
-//       this.lock.getProfile(authResult.idToken, (error: any, profile: any) => {
-//         if (error) {
-//           console.log(error);
-//         }
-//         localStorage.setItem('profile', JSON.stringify(profile));
-//       });
-//       this.lock.hide();
-//     });
-//   }
-//
-//   login() {
-//     this.lock.show();
-//   }
-//
-//   logout() {
-//     //To log out, just remove the token and profile from localStorage
-//     localStorage.removeItem('profile');
-//     localStorage.removeItem('id_token');
-//     //Send the user back to the admin homepage
-//     this.router.navigateByUrl('/admin');
-//   }
-//
-//   loggedIn() {
-//     return tokenNotExpired();
-//   }
-//
-// }

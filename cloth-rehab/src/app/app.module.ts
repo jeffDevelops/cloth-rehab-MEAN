@@ -4,24 +4,24 @@ import { RouterModule, Routes, CanActivate } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { AdminComponent } from './admin/admin.component';
-import { ProtectedComponent } from './protected/protected.component';
+import { CallbackComponent } from './callback/callback.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
 
-
+import { AuthGuardService as AuthGuard } from './auth-guard.service';
 import { AuthService } from './auth.service';
-
 
 const appRoutes: Routes = [
   { path: 'admin',
     component: AdminComponent
   },
   {
-    path: 'admin/authenticated',
-    component: ProtectedComponent
+    path: 'callback',
+    component: CallbackComponent
   },
   {
     path: 'admin/home',
-    component: AdminHomeComponent
+    component: AdminHomeComponent,
+    canActivate: [ AuthGuard ]
   }
 ];
 
@@ -29,7 +29,7 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     AdminComponent,
-    ProtectedComponent,
+    CallbackComponent,
     AdminHomeComponent
   ],
   imports: [
@@ -39,7 +39,7 @@ const appRoutes: Routes = [
       { enableTracing: true } //debugging purposes
     )
   ],
-  providers: [ AuthService ],
+  providers: [ AuthService, AuthGuard ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

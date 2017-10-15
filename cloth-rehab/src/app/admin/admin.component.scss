@@ -1,52 +1,8 @@
 $lt_green: rgb(176, 204, 156);
 $drk_green: rgb(61, 116, 84);
+$dark_gray: rgb(70, 70, 70);
 $red: rgb(192, 72, 63);
 $font: 'Work Sans', sans-serif;
-
-.error_message {
-  height: 50px;
-  background: $red;
-  padding: 23px 0 0 0;
-  p {
-    margin: 0;
-    color: #fff;
-    font-size: 1.1em;
-    text-align: center;
-    a {
-      color: #fff;
-    }
-  }
-}
-
-#logo {
-  display: block;
-  min-width: 200px;
-  max-width: 500px;
-  width: 50%;
-  margin: 10vh auto 0 auto;
-}
-
-h1 {
-  margin-bottom: 0;
-  text-align: center;
-  font-family: $font;
-  text-transform: lowercase;
-  font-size: 2em;
-  font-weight: 400;
-  letter-spacing: .1em;
-  color: $lt_green;
-}
-
-h2 {
-  margin: 0;
-  text-align: center;
-  font-family: $font;
-  text-transform: uppercase;
-  font-size: 1em;
-  font-weight: 600;
-  letter-spacing: .1em;
-  color: $drk_green;
-}
 
 @media (min-width: 600px) and (max-width: 999px) {
   h1 {
@@ -66,22 +22,73 @@ h2 {
   }
 }
 
-#auth_button {
-  display: block;
-  margin: 75px auto;
-  border: 3px solid $drk_green;
-  border-radius: 4px;
-  background: #fff;
-  padding: 20px 40px;
-  color: $drk_green;
-  font-family: $font;
-  font-size: 1.5em;
-  text-transform: lowercase;
-  transition: all .2s;
-  outline: none;
-  &:hover {
-    color: #fff;
-    background: $drk_green;
-    transition: all .4s;
+.button_container {
+  width: 90%;
+  min-width: 300px;
+  margin: 0 auto;
+  box-sizing: border-box;
+
+  #auth_button, #site_home_button {
+    max-width: 300px;
+    display: block;
+    padding: 20px 0;
+    margin: 25px auto 0 auto;
+    border: 3px solid $drk_green;
+    border-radius: 4px;
+    background: #fff;
+    font-family: $font;
+    font-size: 1.5em;
+    text-align: center;
+    color: $drk_green;
+    text-transform: lowercase;
+    transition: all .2s;
+    outline: none;
+    a {
+      color: $drk_green;
+      text-decoration: none;
+    }
+    &:hover, &:focus {
+      color: #fff;
+      background: $drk_green;
+      box-shadow: 0 1px 3px $dark_gray;
+      transition: all .4s;
+    }
+    &:active {
+      box-shadow: none;
+      transition: box-shadow .2s;
+    }
+    &:hover a {
+      color: #fff;
+    }
+  }
+}
+
+/* Different color and formatting for login and go to site buttons.*/
+.button_container {
+  #auth_button {
+    border-color: $drk_green;
+    margin-bottom: 0;
+    width: 100%;
+    &:hover {
+      border-color: $lt_green;
+      background: $lt_green;
+    }
+  }
+  #site_home_button {
+    width: 100%;
+  }
+}
+
+@media(min-width: 700px) {
+  .button_container {
+    display: flex;
+    width: 50%;
+    min-width: 400px;
+    max-width: 600px;
+    #auth_button, #site_home_button {
+      width: 45%;
+      display: inline-block;
+      justify-content: space-between;
+    }
   }
 }

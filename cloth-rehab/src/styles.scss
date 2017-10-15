@@ -1,5 +1,7 @@
 $lt_green: rgb(176, 204, 156);
 $drk_green: rgb(61, 116, 84);
+$dark_gray: rgb(70, 70, 70);
+$red: rgb(192, 72, 63);
 $font: 'Work Sans', sans-serif;
 
 html {
@@ -8,9 +10,14 @@ html {
 }
 
 body {
+  //margin-collapse hack
+  display: inline-block;
+  width: 100%;
+  //margin-collapse hack
   position: relative;
   min-height: 100%;
   margin: 0;
+  padding: 0;
   overflow: auto;
   font-family: $font;
 }
@@ -25,4 +32,58 @@ body {
   text-align: center;
   font-size: 10em;
   color: $drk_green;
+}
+
+.error_message {
+  height: 50px;
+  background: $red;
+  padding: 25px 0 0 0;
+  p {
+    margin: 0;
+    color: #fff;
+    font-size: 1.1em;
+    text-align: center;
+    a {
+      color: #fff;
+    }
+  }
+}
+
+#logo {
+  display: block;
+  min-width: 200px;
+  max-width: 500px;
+  width: 50%;
+  margin: 10vh auto 0 auto;
+}
+
+h1 {
+  margin-bottom: 0;
+  text-align: center;
+  font-family: $font;
+  text-transform: lowercase;
+  font-size: 2em;
+  font-weight: 400;
+  letter-spacing: .1em;
+  color: $lt_green;
+}
+
+h2 {
+  margin: 0;
+  text-align: center;
+  font-family: $font;
+  text-transform: uppercase;
+  font-size: 1em;
+  font-weight: 600;
+  letter-spacing: .1em;
+  color: $drk_green;
+}
+
+@media(max-width: 600px) {
+  h1 {
+    font-size: 1.4em;
+  }
+  h2 {
+    font-size: .8em;
+  }
 }

@@ -10,7 +10,7 @@ import { AuthService } from '../auth.service';
 })
 export class AdminComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor(private auth: AuthService) { }
 
   ngOnInit() {
   }
