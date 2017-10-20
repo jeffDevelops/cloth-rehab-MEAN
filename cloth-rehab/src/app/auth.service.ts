@@ -39,7 +39,7 @@ export class AuthService {
   }
 
   private setSession(authResult): void {
-    //set the time at which the access token will expire
+    // set the time at which the access token will expire
     const expiresAt = JSON.stringify( (authResult.expiresIn * 1000) + new Date().getTime());
     localStorage.setItem('access_token', authResult.accessToken);
     localStorage.setItem('id_token', authResult.idToken);
@@ -50,14 +50,14 @@ export class AuthService {
     localStorage.removeItem('access_token');
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
-    //go back to admin auth route
+    // go back to admin auth route
     this.router.navigate(['/admin']);
   }
 
   public isAuthenticated(): boolean {
-    //check whether current time is past the access_token's expiration time
+    // check whether current time is past the access_token's expiration time
     const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
-    return new Date().getTime() < expiresAt; //returns true if less than localStorage's expiresAt time
+    return new Date().getTime() < expiresAt; // returns true if less than localStorage's expiresAt time
   }
 
   public displayAuthError(): void {

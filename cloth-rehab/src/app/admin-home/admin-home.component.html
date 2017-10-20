@@ -1,7 +1,114 @@
+<img class="small_logo" src="/assets/cloth_rehab.png" alt="Cloth Rehab Logo" />
+
 <button
+  class="logout_button"
   (click)="auth.logout()">
-    Log Out
+    <i class="fa fa-hand-peace-o"> </i>
+    &nbsp;Log Out
 </button>
 
-<h1 class="greeting">{{greetings[which]}}, </h1>
-<h1 class="name">{{names[whom]}}!</h1>
+<div class="greeting_container">
+  <h1 class="greeting">{{greetings[which]}}, </h1>
+  <h1 class="name">{{names[whom]}}!</h1>
+</div>
+
+<h2>What Would You Like To Do?</h2>
+
+<!-- Dropdown on Mobile -->
+<div
+  *ngIf="shouldToggle"
+  class="tasks mobile">
+
+  <div id="portfolio"
+    (click)="toggleDropdown($event)"
+    [@toggleState]="toggleState.portfolio"
+    class="task portfolio_task non_featured">
+      <h2>Update My Portfolio</h2>
+
+      <!-- Invert dropdown while active-->
+      <i
+        *ngIf="shouldToggle && toggleState.portfolio === 'inactive'"
+        class="expand_button fa fa-sort-down">
+      </i>
+      <i
+        *ngIf="shouldToggle && toggleState.portfolio === 'active'"
+        class="expand_button fa fa-sort-up active">
+      </i>
+
+      <div
+        class="options">
+      </div>
+  </div>
+
+  <div id="featured"
+    (click)="toggleDropdown($event)"
+    [@toggleState]="toggleState.featured"
+    class="task featured_task">
+      <h2>Update Featured Project</h2>
+
+      <!-- Invert dropdown while active-->
+      <i
+        *ngIf="shouldToggle && toggleState.featured === 'inactive'"
+        class="expand_button fa fa-sort-down">
+      </i>
+      <i
+        *ngIf="shouldToggle && toggleState.featured === 'active'"
+        class="expand_button fa fa-sort-up">
+      </i>
+
+      <div
+        class="options">
+      </div>
+  </div>
+
+  <div id="info"
+    (click)="toggleDropdown($event)"
+    [@toggleState]="toggleState.info"
+    class="task about_task non_featured">
+      <h2>Update Cloth Rehab Info</h2>
+
+      <!-- Invert dropdown while active-->
+      <i
+        *ngIf="shouldToggle && toggleState.info === 'inactive'"
+        class="expand_button fa fa-sort-down">
+      </i>
+      <i
+        *ngIf="shouldToggle && toggleState.info === 'active'"
+        class="expand_button fa fa-sort-up">
+      </i>
+
+      <div
+        class="options">
+      </div>
+  </div>
+</div>
+
+<!-- All other screen sizes-->
+<div
+  *ngIf="!shouldToggle"
+  class="tasks">
+
+  <div
+    class="task portfolio_task non_featured">
+      <h2>Update My Portfolio</h2>
+      <div
+        class="options">
+      </div>
+  </div>
+
+  <div
+    class="task featured_task">
+      <h2>Update Featured Project</h2>
+      <div
+        class="options">
+      </div>
+  </div>
+
+  <div
+    class="task about_task non_featured">
+      <h2>Update Cloth Rehab Info</h2>
+      <div
+        class="options">
+      </div>
+  </div>
+</div>

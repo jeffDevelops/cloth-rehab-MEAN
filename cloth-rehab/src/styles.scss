@@ -80,6 +80,9 @@ h2 {
 }
 
 @media(max-width: 600px) {
+  .error_message {
+    padding-top: 12px;
+  }
   h1 {
     font-size: 1.4em;
   }

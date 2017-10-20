@@ -1,11 +1,58 @@
+$lt_green: rgb(176, 204, 156);
+$drk_green: rgb(61, 116, 84);
+$dark_gray: rgb(70, 70, 70);
+$red: rgb(192, 72, 63);
+$font: 'Work Sans', sans-serif;
+
+.small_logo {
+  width: 13%;
+  max-width: 50px;
+  position: absolute;
+  left: 25px;
+  top: 15px;
+}
+
+.logout_button {
+  position: absolute;
+  z-index: 2;
+  right: 5px;
+  top: 5px;
+  padding: 15px 25px;
+  border: none;
+  border-radius: 4px;
+  background: transparent;
+  font-family: $font;
+  font-size: 1.2em;
+  text-align: center;
+  color: $drk_green;
+  text-transform: lowercase;
+  transition: color .3s;
+  outline: none;
+  &:hover, &:focus {
+    color: $lt_green;
+    transition: all .4s;
+    cursor: pointer;
+  }
+  &:active {
+    box-shadow: none;
+    transition: box-shadow .2s;
+  }
+}
+
+.greeting_container {
+  width: 100%;
+  height: 250px;
+  position: relative;
+}
+
 .greeting {
   position: relative;
   width: 80%;
   margin: 0 auto;
   max-width: 600px;
   text-align: center;
-  top: 200px;
-  left: -50px;
+  top: 100px;
+  left: -130px;
 }
 
 .name {
@@ -14,6 +61,128 @@
   margin: 0 auto;
   max-width: 600px;
   text-align: center;
-  top: 200px;
-  right: -50px;
+  top: 100px;
+  right: -130px;
+}
+
+.tasks {
+  margin: 50px auto 0 auto;
+  .task {
+    height: auto;
+    width: 100%;
+    padding: 30px 0 5px 0;
+    background: $lt_green;
+    margin: 5px auto;
+    transform: scale(.97);
+    box-shadow: 0 1px 1px $dark_gray;
+    transition: tranform .3s, box-shadow .3s;
+    &:hover, &:focus {
+      transform: scale(.98);
+      box-shadow: 0 2px 2px $dark_gray;
+      transition: all .4s;
+    }
+    &:active {
+      box-shadow: none;
+      transform: scale(.97);
+    }
+    h2 {
+      padding: 0 0 0 25px;
+      text-align: left;
+    }
+    .expand_button {
+      position: absolute;
+      right: 25px;
+      top: 25px;
+      font-size: 1.4em;
+      color: #fff;
+      transition: all .3s;
+      &:hover {
+        transform: scale(1.3);
+        transition: all .4s;
+      }
+    }
+    .expand_button.active {
+      top: 35px;
+    }
+  }
+
+  .featured_task {
+    background: $drk_green;
+    h2 {
+      color: #fff;
+    }
+  }
+
+  .options {
+    height: 87%;
+    width: 95%;
+    margin: 25px auto 0 auto;
+    background: rgba(255, 255, 255, .2);
+  }
+}
+
+//greeting
+@media(max-width: 950px) {
+  .greeting {
+    left: 0;
+  }
+  .name {
+    right: 0;
+  }
+}
+
+//tablet layout
+@media(min-width: 800px) and (max-width: 1199px) {
+  .tasks {
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: 600px;
+    .task {
+      &:hover, &:active {
+        transform: scale(.97);
+      }
+      .expand_button {
+        display: none;
+      }
+    }
+    .featured_task {
+      height: 270px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+    }
+    .non_featured {
+      position: absolute;
+      justify-content: space-around;
+      top: 315px;
+      height: 600px;
+      width: 50.5%;
+      transform: scale(.94);
+      &:hover {
+        transform: scale(.94);
+      }
+    }
+    .portfolio_task {
+      left: 0;
+    }
+    .about_task {
+      right: 0;
+    }
+  }
+}
+
+//desktop layout
+@media(min-width: 1200px) {
+  .tasks {
+    display: flex;
+    .task {
+      height: 600px;
+      justify-content: space-between;
+      .expand_button{
+        display: none;
+      }
+    }
+  }
 }
