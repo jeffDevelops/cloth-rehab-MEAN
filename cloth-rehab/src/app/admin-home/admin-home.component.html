@@ -12,12 +12,10 @@
   <h1 class="name">{{names[whom]}}!</h1>
 </div>
 
-<h2>What Would You Like To Do?</h2>
+<h2 class="prompt">What Would You Like To Do?</h2>
 
 <!-- Dropdown on Mobile -->
-<div
-  *ngIf="shouldToggle"
-  class="tasks mobile">
+<div class="tasks mobile">
 
   <div id="portfolio"
     (click)="toggleDropdown($event)"
@@ -27,38 +25,87 @@
 
       <!-- Invert dropdown while active-->
       <i
-        *ngIf="shouldToggle && toggleState.portfolio === 'inactive'"
+        *ngIf="toggleState.portfolio === 'inactive'"
         class="expand_button fa fa-sort-down">
       </i>
-      <i
-        *ngIf="shouldToggle && toggleState.portfolio === 'active'"
+      <i id="portfolio_toggle"
+        *ngIf="toggleState.portfolio === 'active'"
         class="expand_button fa fa-sort-up active">
       </i>
 
       <div
+        *ngIf="toggleState.portfolio === 'active'"
         class="options">
       </div>
   </div>
 
   <div id="featured"
     (click)="toggleDropdown($event)"
+    [class.noHoverEffect]="toggleState.featured === 'active'"
     [@toggleState]="toggleState.featured"
     class="task featured_task">
       <h2>Update Featured Project</h2>
 
       <!-- Invert dropdown while active-->
       <i
-        *ngIf="shouldToggle && toggleState.featured === 'inactive'"
+        (click)="showForm = !showForm"
+        *ngIf="toggleState.featured === 'inactive'"
         class="expand_button fa fa-sort-down">
       </i>
-      <i
-        *ngIf="shouldToggle && toggleState.featured === 'active'"
+      <i (click)="showForm = !showForm"
+        id="featured_toggle"
+        *ngIf="toggleState.featured === 'active'"
         class="expand_button fa fa-sort-up">
       </i>
 
-      <div
-        class="options">
-      </div>
+      <!-- Featured Project Form -->
+      <form
+        [class.form-display]="toggleState.featured === 'active'"
+        [class.form-hidden]="toggleState.featured === 'inactive'"
+        [@formDisplay]="toggleState.featured">
+
+          <div class="form_group">
+            <div class="label_inline">
+              <label for="project_name">Project Title</label>
+              <div class="checkbox_group">
+                <input id="getNameFromEtsy" type="checkbox">
+                <label class="checkbox_label" for="getNameFromEtsy">Pull from Etsy</label>
+              </div>
+            </div>
+            <input
+              ([ngModel])="featuredProject.title"
+              type="text" placeholder="Your newest, or most special project" name="title"/>
+          </div>
+
+          <div class="side_by_side">
+            <div class="form_group">
+              <label for="project_photo_front">Front Photo</label>
+              <input id="project_photo_front" type="file" name="front_photo" />
+            </div>
+
+            <div class="form_group right">
+              <label for="project_photo_back">Back Photo</label>
+              <input  id="project_photo_back" type="file" name="back_photo" />
+            </div>
+          </div>
+
+          <div class="form_group">
+            <div class="label_inline">
+              <label for="project_description">Description</label>
+              <div class="checkbox_group">
+                <input id="getNameFromEtsy" type="checkbox">
+                <label class="checkbox_label" for="getNameFromEtsy">Pull from Etsy</label>
+              </div>
+            </div>
+            <textarea
+              ([ngModel])="featuredProject.description"
+              id="project_description" placeholder="What makes this project so special?" name="description"></textarea>
+          </div>
+
+          <input (click)="toggleFeaturedPreview()"
+            type="button" value="Preview Changes"
+          />
+      </form>
   </div>
 
   <div id="info"
@@ -69,46 +116,15 @@
 
       <!-- Invert dropdown while active-->
       <i
-        *ngIf="shouldToggle && toggleState.info === 'inactive'"
+        *ngIf="toggleState.info === 'inactive'"
         class="expand_button fa fa-sort-down">
       </i>
-      <i
-        *ngIf="shouldToggle && toggleState.info === 'active'"
+      <i id="info_toggle"
+        *ngIf="toggleState.info === 'active'"
         class="expand_button fa fa-sort-up">
       </i>
 
-      <div
-        class="options">
-      </div>
   </div>
 </div>
 
-<!-- All other screen sizes-->
-<div
-  *ngIf="!shouldToggle"
-  class="tasks">
-
-  <div
-    class="task portfolio_task non_featured">
-      <h2>Update My Portfolio</h2>
-      <div
-        class="options">
-      </div>
-  </div>
-
-  <div
-    class="task featured_task">
-      <h2>Update Featured Project</h2>
-      <div
-        class="options">
-      </div>
-  </div>
-
-  <div
-    class="task about_task non_featured">
-      <h2>Update Cloth Rehab Info</h2>
-      <div
-        class="options">
-      </div>
-  </div>
-</div>
+<app-preview-featured *ngIf="preview.showFeaturedPreview"></app-preview-featured>

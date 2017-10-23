@@ -1,0 +1,26 @@
+<div [@dismissPreview]="preview.featuredAnimationTrigger" class="blur">
+  <div class="modal">
+      <div class="container">
+        <div class="image_container front">
+          <img class="front_image" src="#" alt="Featured Project Front" />
+        </div>
+        <div class="text_container">
+          <h2>Featured Project</h2>
+          <h3>TITLE INTERPOLATED HERE</h3>
+          <p>Kickstarter hoodie literally, before they sold out sustainable vice tattooed poke PBR flexitarian pitchfork selvage coloring book blog schlitz selfies. Hexagon poke gochujang man braid pour-over la croix brooklyn. Listicle chartreuse cliche beard flexitarian tumblr.</p>
+          <p>Sizes Available: <span   class="sizes">Hard | Coded | For | Now<!-- *ngFor Sizes Available from Etsy API --></span>
+          </p>
+        </div>
+        <div class="image_container back">
+          <img class="back_image" src="#" alt="Featured Project Back" />
+        </div>
+      </div>
+      <div class="action_container">
+        <div class="buttons">
+          <button
+          (click)="toggleFeaturedPreview()" class="back_button">Back</button>
+          <button class="publish_button">Publish</button>
+        </div>
+      </div>
+  </div>
+</div>

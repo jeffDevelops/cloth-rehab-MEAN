@@ -41,7 +41,7 @@ $font: 'Work Sans', sans-serif;
 
 .greeting_container {
   width: 100%;
-  height: 250px;
+  height: 100px;
   position: relative;
 }
 
@@ -51,8 +51,7 @@ $font: 'Work Sans', sans-serif;
   margin: 0 auto;
   max-width: 600px;
   text-align: center;
-  top: 100px;
-  left: -130px;
+  top: 75px;
 }
 
 .name {
@@ -61,16 +60,25 @@ $font: 'Work Sans', sans-serif;
   margin: 0 auto;
   max-width: 600px;
   text-align: center;
-  top: 100px;
-  right: -130px;
+  top: 75px;
+}
+
+.prompt {
+  margin-top: 100px;
 }
 
 .tasks {
-  margin: 50px auto 0 auto;
+  max-width: 800px;
+  margin: 25px auto 0 auto;
+  overflow: auto;
+  .task.noHoverEffect {
+    &:hover {
+      transform: scale(.97);
+    }
+  }
   .task {
-    height: auto;
     width: 100%;
-    padding: 30px 0 5px 0;
+    padding: 30px 0;
     background: $lt_green;
     margin: 5px auto;
     transform: scale(.97);
@@ -86,7 +94,8 @@ $font: 'Work Sans', sans-serif;
       transform: scale(.97);
     }
     h2 {
-      padding: 0 0 0 25px;
+      width: 90%;
+      margin: 0 auto;
       text-align: left;
     }
     .expand_button {
@@ -94,15 +103,156 @@ $font: 'Work Sans', sans-serif;
       right: 25px;
       top: 25px;
       font-size: 1.4em;
-      color: #fff;
+      color: $drk_green;
       transition: all .3s;
       &:hover {
-        transform: scale(1.3);
+        transform: scale(1.2);
         transition: all .4s;
       }
     }
     .expand_button.active {
       top: 35px;
+    }
+    .form-display {
+      display: block;
+      transition: all .3s;
+      transition-delay: .6s;
+    }
+    .form-hidden {
+      display: none;
+      transition: all .3s;
+      transition-delay: .6s;
+    }
+    form {
+      height: auto;
+      width: 90%;
+      margin: 0 auto;
+      .side_by_side {
+        .form_group {
+          width: 50%;
+          float: left;
+          input[type=file] {
+            max-width:175px;
+            margin: 10px 0 0 0;
+            box-shadow: none;
+            padding: 0;
+            text-align: right;
+            color: #fff;
+            font-family: $font;
+            &:hover {
+              transform: scale(1);
+            }
+          }
+        }
+        .form_group.right {
+          float: right;
+          label {
+            text-align: right;
+          }
+          input {
+            display: inline;
+            text-align: right;
+            float: right;
+          }
+        }
+      }
+      .form_group {
+        height: auto;
+        width: 100%;
+        margin: 0 auto;
+        box-sizing: content-box;
+        .label_inline {
+          label {
+            display: inline-block;
+          }
+          .checkbox_group {
+            float: right;
+            margin: 0 0 0 auto;
+            display: inline-block;
+          }
+          .checkbox_label {
+            text-align: right;
+          }
+        }
+        label {
+          display: block;
+          margin-top: 50px;
+          color: #fff;
+          text-transform: lowercase;
+          letter-spacing: .1em;
+          font-size: .8em;
+        }
+        input[type=text], textarea {
+          margin-top: 10px;
+          padding: 10px;
+          height: 25px;
+          width: calc(100% - 20px);
+          border: none;
+          outline: none;
+          box-shadow: 0 1px 1px $dark_gray;
+          font-size: 1em;
+          transform: scale(1);
+          transition: all .2s;
+          &:hover {
+            box-shadow: 0 4px 4px $dark_gray;
+            transform: scale(.99);
+            transition: all .3s;
+          }
+          &::placeholder {
+            font-family: $font;
+            color: $dark_gray;
+            font-size: 1em;
+          }
+          &:hover::placeholder,
+          &:active::placeholder,
+          &:focus::placeholder {
+            color: $drk_green;
+            transition: color .3s;
+          }
+          &:active, &:focus {
+            transition: all .3s;
+            box-shadow: none;
+            color: $drk_green;
+          }
+        }
+        textarea {
+          height: 100px;
+          box-shadow: 0 2px 2px $dark_gray;
+          transition: all .2s;
+          &:hover {
+            box-shadow: 0 6px 6px $dark_gray;
+            transition: all .3s;
+          }
+          &:active, &:focus {
+            transition: all .3s;
+            box-shadow: none;
+          }
+        }
+      }
+      input[type=button] {
+        display: block;
+        width: 100%;
+        padding: 20px 40px;
+        margin: 25px 0 0 0;
+        background: $drk_green;
+        color: $lt_green;
+        border: 2px solid $lt_green;
+        font-family: $font;
+        font-size: 1em;
+        text-align: center;
+        text-transform: lowercase;
+        transition: all .2s;
+        outline: none;
+        &:hover {
+          background: $lt_green;
+          color: $drk_green;
+          box-shadow: 0 2px 2px $dark_gray;
+          transform: scale(.99);
+        }
+        &:active {
+          box-shadow: none;
+        }
+      }
     }
   }
 
@@ -111,13 +261,9 @@ $font: 'Work Sans', sans-serif;
     h2 {
       color: #fff;
     }
-  }
-
-  .options {
-    height: 87%;
-    width: 95%;
-    margin: 25px auto 0 auto;
-    background: rgba(255, 255, 255, .2);
+    .expand_button {
+      color: #fff;
+    }
   }
 }
 
@@ -128,61 +274,5 @@ $font: 'Work Sans', sans-serif;
   }
   .name {
     right: 0;
-  }
-}
-
-//tablet layout
-@media(min-width: 800px) and (max-width: 1199px) {
-  .tasks {
-    display: flex;
-    position: relative;
-    width: 100%;
-    height: 600px;
-    .task {
-      &:hover, &:active {
-        transform: scale(.97);
-      }
-      .expand_button {
-        display: none;
-      }
-    }
-    .featured_task {
-      height: 270px;
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-    }
-    .non_featured {
-      position: absolute;
-      justify-content: space-around;
-      top: 315px;
-      height: 600px;
-      width: 50.5%;
-      transform: scale(.94);
-      &:hover {
-        transform: scale(.94);
-      }
-    }
-    .portfolio_task {
-      left: 0;
-    }
-    .about_task {
-      right: 0;
-    }
-  }
-}
-
-//desktop layout
-@media(min-width: 1200px) {
-  .tasks {
-    display: flex;
-    .task {
-      height: 600px;
-      justify-content: space-between;
-      .expand_button{
-        display: none;
-      }
-    }
   }
 }

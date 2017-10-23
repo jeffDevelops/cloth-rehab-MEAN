@@ -1,5 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { PreviewService } from '../preview.service';
 import {
   trigger,
   state,
@@ -18,16 +19,25 @@ import {
         minHeight: '0px'
       })),
       state('active', style({
-        minHeight: '600px'
+        minHeight: '300px'
       })),
-      transition('inactive => active', animate('350ms ease-in')),
-      transition('active => inactive', animate('350ms ease-out'))
+      transition('inactive <=> active', animate('350ms ease-in'))
+    ]),
+    trigger('formDisplay', [
+      state('inactive', style({
+        opacity: 0,
+      })),
+      state('active', style({
+        opacity: 1,
+      })),
+      transition('inactive => active', animate('350ms 100ms ease-in')),
+      transition('active => inactive', animate('350ms ease-in'))
     ])
   ]
 })
 export class AdminHomeComponent implements OnInit {
 
-  constructor(public auth: AuthService) { }
+  constructor(public auth: AuthService, public preview: PreviewService) { }
 
   // Greeting
   greetings: Array<string> = [
@@ -46,10 +56,21 @@ export class AdminHomeComponent implements OnInit {
   whom: number;
 
   shouldToggle: boolean;
+
   toggleState = {
     portfolio: 'inactive',
     featured: 'inactive',
     info: 'inactive'
+  };
+
+  showForm = false;
+
+  // ngModel properties
+  featuredProject = {
+    title: '',
+    description: '',
+    // front photo
+    // back photo
   };
 
   randomizeGreeting(): number {
@@ -63,34 +84,31 @@ export class AdminHomeComponent implements OnInit {
     const viewport = window.innerWidth;
     viewport < 800 ? this.shouldToggle = true : this.shouldToggle = false;
   }
-
-  toggleDropdown(event): void {
-    console.log(event.currentTarget.id);
-    const specificDropdown = event.currentTarget.id;
-    if (this.toggleState[specificDropdown] === 'active') {
-      this.toggleState[specificDropdown] = 'inactive';
-    } else {
-      // only one dropdown can be active at a time for UX purposes
-      Object.keys(this.toggleState).forEach( (key, value) => {
-        return this.toggleState[key] = 'inactive';
-      });
-      this.toggleState[specificDropdown] = 'active';
+  toggleDropdown(event): string {
+    const specificDropdown = event.currentTarget;
+    const elementType = event.target.nodeName.toLowerCase();
+    console.log('Before: ', this.toggleState);
+    if (elementType === 'i') {
+      if (this.toggleState[specificDropdown.id] === 'active') {
+        return this.toggleState[specificDropdown.id] = 'inactive';
+      } else {
+        // only one dropdown can be active at a time for UX purposes
+        Object.keys(this.toggleState).forEach( (key, value) => {
+          return this.toggleState[key] = 'inactive';
+        });
+        return this.toggleState[specificDropdown.id] = 'active';
+      }
     }
-    // this.toggleState.portfolio = this.toggleState.portfolio === 'active' ? 'inactive' : 'active';
-    // this.toggleState.featured = this.toggleState.featured === 'active' ? 'inactive' : 'active';
-    // this.toggleState.info = this.toggleState.info === 'active' ? 'inactive' : 'active';
+    // only one dropdown can be active at a time for UX purposes
+    Object.keys(this.toggleState).forEach( (key, value) => {
+      return this.toggleState[key] = 'inactive';
+    });
+    return this.toggleState[specificDropdown.id] = 'active';
   }
 
-  // Show options by default on larger screens (checked with *ngIf)
-  // showOptionsOnLargeScreens(): boolean {
-  //   if (window.innerWidth > 800) {
-  //     console.log('show returned true');
-  //     return true;
-  //   } else {
-  //     console.log('show returned false');
-  //     return false;
-  //   }
-  // }
+  toggleFeaturedPreview(): void {
+    this.preview.toggleFeatured();
+  }
 
   ngOnInit() {
     // Greeting

@@ -1,26 +1,34 @@
-<div class="error_message"
-  *ngIf="auth.accessDenied">
-  <p>
-    Access Denied. If you are not a site administrator, continue to the site
-    <a href="#">here</a>.
-  </p>
-</div>
+<div class="page">
+  <div class="card">
 
-<img id="logo" src="/assets/cloth_rehab.png" alt="Cloth Rehab Logo" />
-<h1>Cloth Rehab</h1>
-<h2>Admin Portal</h2>
+    <div class="error_message"
+      *ngIf="auth.accessDenied">
+      <p>
+        Access Denied. If you are not a site administrator, continue to the site
+        <a href="#">here</a>.
+      </p>
+    </div>
+      <div class="content_container">
 
-<div class="button_container">
-  <button
-    id="auth_button"
-    *ngIf="!auth.isAuthenticated()"
-    (click)="auth.login()">
-      Log In
-  </button>
+      <img id="logo" src="/assets/cloth_rehab.png" alt="Cloth Rehab Logo" />
+      <h1>Cloth Rehab</h1>
+      <h2>Admin Portal</h2>
 
-  <button id="site_home_button">
-    <a routerLink="#">go to site</a>
-  </button>
+      <div class="button_container">
+        <button
+          id="auth_button"
+          *ngIf="!auth.isAuthenticated()"
+          (click)="auth.login()">
+            Log In
+        </button>
+
+        <button id="site_home_button">
+          <a routerLink="#">go to site</a>
+        </button>
+      </div>
+
+    </div>
+  </div>
 </div>
 
 <router-outlet></router-outlet>
