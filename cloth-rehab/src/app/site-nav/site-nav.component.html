@@ -1,0 +1,62 @@
+<img class="logo" src="../../assets/cloth_rehab.png" alt="Cloth Rehab Logo">
+
+<div class="nav_container">
+  <nav class="store_nav">
+    <!-- check URL pathname and disable link accordingly -->
+    <a
+    *ngIf="this.routePath === '/mens'"
+    class="disabled"
+    routerLink="/mens">Mens
+    </a>
+    <a
+    *ngIf="this.routePath !== '/mens'"
+    routerLink="/mens">Mens
+    </a>
+
+    <!-- check URL pathname and disable link accordingly -->
+    <a
+    *ngIf="this.routePath === '/womens'"
+    class="disabled"
+    routerLink="/womens">Womens
+    </a>
+    <a
+    *ngIf="this.routePath !== '/womens'"
+    routerLink="/womens">Womens
+    </a>
+  </nav>
+  <div class="logo_text">
+    <!-- check URL pathname and disable link accordingly -->
+    <a
+    *ngIf="this.routePath === '/'"
+    class="disabled home"
+    routerLink="/">Cloth Rehab
+    </a>
+    <a
+    *ngIf="this.routePath !== '/'"
+    routerLink="/">Cloth Rehab
+    </a>
+  </div>
+  <nav class="meta_nav">
+    <!-- check URL pathname and disable link accordingly -->
+    <a
+    *ngIf="this.routePath === '/about'"
+    class="disabled"
+    routerLink="/about">About
+    </a>
+    <a
+    *ngIf="this.routePath !== '/about'" routerLink="/about">About
+    </a>
+
+    <!-- check URL pathname and disable link accordingly -->
+    <a
+    *ngIf="this.routePath === '/work'"
+    class="disabled"
+    routerLink="/work"><span>Past </span>Work
+    </a>
+    <a
+    *ngIf="this.routePath !== '/work'"
+    routerLink="/work"><span>Past </span>Work
+    </a>
+
+  </nav>
+</div>

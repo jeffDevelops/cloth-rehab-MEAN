@@ -1,0 +1,38 @@
+$lt_green: rgb(176, 204, 156);
+$lt_green_alpha: rgba(176, 204, 156, .7);
+$drk_green: rgb(61, 116, 84);
+$drk_green_alpha: rgba(61, 116, 84, .7);
+$dark_gray: rgb(70, 70, 70);
+$red: rgb(192, 72, 63);
+$font: 'Work Sans', sans-serif;
+
+.vision_statement {
+  width: 90%;
+  margin: 0 auto;
+  h1 {
+    font-size: 5em;
+    color: #fff;
+    text-align: left;
+  }
+}
+
+// Vision Statement
+@media(min-width: 725px) and (max-width: 1475px) {
+  .vision_statement {
+    h1 {
+      width: 80%;
+      margin-right: auto;
+      margin-left: auto;
+      text-align: center;
+      font-size: 3.5em;
+    }
+  }
+}
+@media(max-width: 724px) {
+  .vision_statement {
+    h1 {
+      text-align: center;
+      font-size: 2em;
+    }
+  }
+}

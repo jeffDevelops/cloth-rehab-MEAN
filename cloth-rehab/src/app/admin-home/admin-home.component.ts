@@ -58,6 +58,7 @@ export class AdminHomeComponent implements OnInit {
   shouldToggle: boolean;
 
   toggleState = {
+    inventory: 'inactive',
     portfolio: 'inactive',
     featured: 'inactive',
     info: 'inactive'

@@ -1,7 +1,10 @@
 $lt_green: rgb(176, 204, 156);
+$lt_green_alpha: rgba(176, 204, 156, .7);
 $drk_green: rgb(61, 116, 84);
+$drk_green_alpha: rgba(61, 116, 84, .7);
 $dark_gray: rgb(70, 70, 70);
 $red: rgb(192, 72, 63);
+$red_alpha: rgba(192, 72, 63, .7);
 $font: 'Work Sans', sans-serif;
 
 .small_logo {
@@ -22,20 +25,18 @@ $font: 'Work Sans', sans-serif;
   border-radius: 4px;
   background: transparent;
   font-family: $font;
-  font-size: 1.2em;
+  font-size: 1em;
+  font-weight: 400;
   text-align: center;
-  color: $drk_green;
-  text-transform: lowercase;
+  color: #fff;
+  letter-spacing: .05em;
+  text-transform: uppercase;
   transition: color .3s;
   outline: none;
   &:hover, &:focus {
     color: $lt_green;
     transition: all .4s;
     cursor: pointer;
-  }
-  &:active {
-    box-shadow: none;
-    transition: box-shadow .2s;
   }
 }
 
@@ -52,6 +53,7 @@ $font: 'Work Sans', sans-serif;
   max-width: 600px;
   text-align: center;
   top: 75px;
+  color: #fff;
 }
 
 .name {
@@ -61,10 +63,12 @@ $font: 'Work Sans', sans-serif;
   max-width: 600px;
   text-align: center;
   top: 75px;
+  color: #fff;
 }
 
 .prompt {
   margin-top: 100px;
+  color: $lt_green;
 }
 
 .tasks {
@@ -79,31 +83,29 @@ $font: 'Work Sans', sans-serif;
   .task {
     width: 100%;
     padding: 30px 0;
-    background: $lt_green;
+    background: $lt_green_alpha;
     margin: 5px auto;
     transform: scale(.97);
-    box-shadow: 0 1px 1px $dark_gray;
-    transition: tranform .3s, box-shadow .3s;
+    transition: transform .3s;
     &:hover, &:focus {
       transform: scale(.98);
-      box-shadow: 0 2px 2px $dark_gray;
       transition: all .4s;
     }
     &:active {
-      box-shadow: none;
       transform: scale(.97);
     }
     h2 {
       width: 90%;
       margin: 0 auto;
       text-align: left;
+      color: #fff;
     }
     .expand_button {
       position: absolute;
       right: 25px;
       top: 25px;
       font-size: 1.4em;
-      color: $drk_green;
+      color: #fff;
       transition: all .3s;
       &:hover {
         transform: scale(1.2);
@@ -127,6 +129,31 @@ $font: 'Work Sans', sans-serif;
       height: auto;
       width: 90%;
       margin: 0 auto;
+      a {
+        display: block;
+        padding: 20px 40px;
+        margin: 25px 0;
+        background: $drk_green_alpha;
+        border: none;
+        color: #fff;
+        font-family: $font;
+        font-size: 1em;
+        text-align: center;
+        text-transform: lowercase;
+        text-decoration: none;
+        transition: all .2s;
+        outline: none;
+        &:hover {
+          background: $lt_green_alpha;
+          transform: scale(.99);
+        }
+      }
+      .edit_delete {
+        background: $red_alpha;
+        &:hover {
+          background: $red;
+        }
+      }
       .side_by_side {
         .form_group {
           width: 50%;
@@ -134,7 +161,6 @@ $font: 'Work Sans', sans-serif;
           input[type=file] {
             max-width:175px;
             margin: 10px 0 0 0;
-            box-shadow: none;
             padding: 0;
             text-align: right;
             color: #fff;
@@ -165,14 +191,6 @@ $font: 'Work Sans', sans-serif;
           label {
             display: inline-block;
           }
-          .checkbox_group {
-            float: right;
-            margin: 0 0 0 auto;
-            display: inline-block;
-          }
-          .checkbox_label {
-            text-align: right;
-          }
         }
         label {
           display: block;
@@ -182,6 +200,10 @@ $font: 'Work Sans', sans-serif;
           letter-spacing: .1em;
           font-size: .8em;
         }
+        input[type=file] {
+          color: #fff;
+          font-family: $font;
+        }
         input[type=text], textarea {
           margin-top: 10px;
           padding: 10px;
@@ -189,12 +211,10 @@ $font: 'Work Sans', sans-serif;
           width: calc(100% - 20px);
           border: none;
           outline: none;
-          box-shadow: 0 1px 1px $dark_gray;
           font-size: 1em;
           transform: scale(1);
           transition: all .2s;
           &:hover {
-            box-shadow: 0 4px 4px $dark_gray;
             transform: scale(.99);
             transition: all .3s;
           }
@@ -211,21 +231,17 @@ $font: 'Work Sans', sans-serif;
           }
           &:active, &:focus {
             transition: all .3s;
-            box-shadow: none;
             color: $drk_green;
           }
         }
         textarea {
           height: 100px;
-          box-shadow: 0 2px 2px $dark_gray;
           transition: all .2s;
           &:hover {
-            box-shadow: 0 6px 6px $dark_gray;
             transition: all .3s;
           }
           &:active, &:focus {
             transition: all .3s;
-            box-shadow: none;
           }
         }
       }
@@ -234,9 +250,9 @@ $font: 'Work Sans', sans-serif;
         width: 100%;
         padding: 20px 40px;
         margin: 25px 0 0 0;
-        background: $drk_green;
-        color: $lt_green;
-        border: 2px solid $lt_green;
+        background: $drk_green_alpha;
+        border: none;
+        color: #fff;
         font-family: $font;
         font-size: 1em;
         text-align: center;
@@ -244,20 +260,15 @@ $font: 'Work Sans', sans-serif;
         transition: all .2s;
         outline: none;
         &:hover {
-          background: $lt_green;
-          color: $drk_green;
-          box-shadow: 0 2px 2px $dark_gray;
+          background: $lt_green_alpha;
           transform: scale(.99);
-        }
-        &:active {
-          box-shadow: none;
         }
       }
     }
   }
 
   .featured_task {
-    background: $drk_green;
+    background: $drk_green_alpha;
     h2 {
       color: #fff;
     }

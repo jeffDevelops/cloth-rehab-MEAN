@@ -1,0 +1,134 @@
+$lt_green: rgb(176, 204, 156);
+$lt_green_alpha: rgba(176, 204, 156, .7);
+$drk_green: rgb(61, 116, 84);
+$drk_green_alpha: rgba(61, 116, 84, .7);
+$dark_gray: rgb(70, 70, 70);
+$red: rgb(192, 72, 63);
+$font: 'Work Sans', sans-serif;
+
+.logo {
+  display: block;
+  width: 10%;
+  min-width: 100px;
+  max-width: 175px;
+  margin: 25px auto 10px auto;
+}
+
+.disabled {
+  pointer-events: none;
+  color: $lt_green;
+}
+
+.disabled.home {
+  color: #fff;
+}
+
+.nav_container {
+  width: 90%;
+  margin: 0 auto;
+  max-width: 1900px;
+  display: flex;
+  .store_nav {
+    display: flex;
+    vertical-align: top;
+    justify-content: space-between;
+    width: 17%;
+    padding: 0;
+  }
+  .logo_text {
+    display: flex;
+    vertical-align: top;
+    align-items: flex-start;
+    width: 66%;
+    a {
+      display: block;
+      margin: 0 auto;
+      text-transform: lowercase;
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+  .meta_nav {
+    display: flex;
+    vertical-align: top;
+    justify-content: space-between;
+    width: 17%;
+    padding: 0;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: .15em;
+  font-weight: 500;
+  font-size: 1.1em;
+  transition: color .2s;
+  &:hover {
+    color: $lt_green;
+    transition: color .3s;
+  }
+}
+
+@media(min-width: 725px) and (max-width: 1475px) {
+  .nav_container {
+    .store_nav,
+    .meta_nav {
+      justify-content: space-around;
+      width: 35%;
+    }
+    .logo_text {
+      width: 30%;
+    }
+  }
+}
+
+@media(max-width: 425px) {
+  .nav_container {
+    .store_nav,
+    .meta_nav {
+      justify-content: space-between;
+      width: 45%;
+    }
+    .meta_nav {
+      margin-left: auto;
+    }
+    .logo_text {
+      display: none;
+    }
+  }
+  a {
+    font-size: 1em;
+    span {
+      display: none;
+    }
+  }
+}
+
+@media(min-width: 426px) and (max-width: 724px) {
+  .nav_container {
+    .store_nav,
+    .meta_nav {
+      justify-content: space-between;
+      width: 35%;
+    }
+    .meta_nav {
+      margin-left: auto;
+    }
+    .store_nav {
+      margin-right: auto;
+    }
+    .logo_text {
+      display: none;
+    }
+  }
+  a {
+    font-size: 1em;
+    span {
+      display: none;
+    }
+  }
+}

@@ -1,4 +1,19 @@
+$lt_green: rgb(176, 204, 156);
+$dark_gray: rgb(70, 70, 70);
+
+.container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: $dark_gray;
+}
+
 .loader {
+  font-size: 18em;
   width: auto;
   margin: 0 auto;
+  color: $lt_green;
+  animation: fa-spin 5s infinite linear;
 }

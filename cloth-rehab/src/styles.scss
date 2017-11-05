@@ -1,11 +1,13 @@
 $lt_green: rgb(176, 204, 156);
 $drk_green: rgb(61, 116, 84);
-$dark_gray: rgb(70, 70, 70);
+$dark_gray: rgb(20, 20, 20);
+$dark_gray_alpha: rgba(20, 20, 20, .5);
 $red: rgb(192, 72, 63);
 $font: 'Work Sans', sans-serif;
 
 html {
-  height: 100%;
+  height: 100vh;
+  width: 100%;
   box-sizing: border-box;
 }
 
@@ -15,12 +17,24 @@ body {
   width: 100%;
   //margin-collapse hack
   position: relative;
-  min-height: 149px;
+  // min-height: 149px;
   margin: 0;
   padding: 0;
   overflow: auto;
   font-family: $font;
   box-sizing: border-box;
+  background-image: linear-gradient($dark_gray_alpha, $dark_gray_alpha),
+                    url('./assets/sew_machine.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+// background image position on smaller screens
+@media(max-width: 500px) {
+  body {
+    background-position: left;
+  }
 }
 
 app-root {

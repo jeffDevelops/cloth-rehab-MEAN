@@ -17,9 +17,47 @@
 <!-- Dropdown on Mobile -->
 <div class="tasks mobile">
 
+  <div id="inventory"
+    (click)="toggleDropdown($event)"
+    [@toggleState]="toggleState.inventory"
+    [class.noHoverEffect]="toggleState.inventory === 'active'"
+    class="task inventory_task featured_task">
+      <h2>Update My Inventory</h2>
+      <!-- Invert dropdown while active-->
+      <i
+        *ngIf="toggleState.inventory === 'inactive'"
+        class="expand_button fa fa-sort-down">
+      </i>
+      <i id="inventory_toggle"
+        *ngIf="toggleState.inventory === 'active'"
+        class="expand_button fa fa-sort-up active">
+      </i>
+
+      <div
+        *ngIf="toggleState.inventory === 'active'"
+        class="options">
+      </div>
+
+      <form
+        [class.form-display]="toggleState.inventory === 'active'"
+        [class.form-hidden]="toggleState.inventory === 'inactive'"
+        [@formDisplay]="toggleState.inventory">
+        <a href="/admin/home" class="edit_delete">Edit or Delete an Item</a>
+        <hr />
+        <div class="form-group">
+          <input type="file">
+        </div>
+        <input
+         type="button" value="Submit">
+        <!-- HTTP SERVICE -->
+      </form>
+
+  </div>
+
   <div id="portfolio"
     (click)="toggleDropdown($event)"
     [@toggleState]="toggleState.portfolio"
+    [class.noHoverEffect]="toggleState.portfolio === 'active'"
     class="task portfolio_task non_featured">
       <h2>Update My Portfolio</h2>
 
@@ -67,10 +105,6 @@
           <div class="form_group">
             <div class="label_inline">
               <label for="project_name">Project Title</label>
-              <div class="checkbox_group">
-                <input id="getNameFromEtsy" type="checkbox">
-                <label class="checkbox_label" for="getNameFromEtsy">Pull from Etsy</label>
-              </div>
             </div>
             <input
               ([ngModel])="featuredProject.title"
@@ -92,10 +126,6 @@
           <div class="form_group">
             <div class="label_inline">
               <label for="project_description">Description</label>
-              <div class="checkbox_group">
-                <input id="getNameFromEtsy" type="checkbox">
-                <label class="checkbox_label" for="getNameFromEtsy">Pull from Etsy</label>
-              </div>
             </div>
             <textarea
               ([ngModel])="featuredProject.description"
@@ -111,6 +141,7 @@
   <div id="info"
     (click)="toggleDropdown($event)"
     [@toggleState]="toggleState.info"
+    [class.noHoverEffect]="toggleState.info === 'active'"
     class="task about_task non_featured">
       <h2>Update Cloth Rehab Info</h2>
 
