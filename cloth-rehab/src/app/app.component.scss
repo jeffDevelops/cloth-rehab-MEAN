@@ -1,0 +1,19 @@
+$lt_green: rgb(176, 204, 156);
+$drk_green: rgb(61, 116, 84);
+$dark_gray: rgb(20, 20, 20);
+$dark_gray_alpha: rgba(20, 20, 20, .5);
+$red: rgb(192, 72, 63);
+$font: 'Work Sans', sans-serif;
+
+.app_container {
+  position: fixed;
+  z-index: -1;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  background-image: linear-gradient($dark_gray_alpha, $dark_gray_alpha),
+                    url('../assets/sew_machine.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

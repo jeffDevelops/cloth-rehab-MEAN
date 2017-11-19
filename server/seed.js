@@ -1,9 +1,267 @@
-const Shirt = require('./models/index').Shirt;
+const tables = require('./models').models;
+const db = require('./models');
 
-module.exports {
-  const shirts = [
-    {
-      
-    }
-  ]
-}
+////////////////////////////////////////////////////////////
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+// WARNING: DO NOT RUN THIS FILE IN PRODUCTION. IT CONTAINS:
+
+// 1. a db.drop() call,
+// 2. and a { force: true } option passed to to the db.sync
+//    method
+
+// RUNNING THE SEED FILE WILL DROP THE DATABASE, AND IF THAT
+// CALL IS REMOVED, THE SYNC OPTION WILL OVERWRITE THE
+// DATABASE CONTENTS!!!
+
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+////////////////////////////////////////////////////////////
+
+
+let shirts = [
+  {
+    slug: 'bold',
+    title: 'Bold',
+    description: 'Paisley fabric sourced from Denver, CO.',
+    primaryImage: 'http://mediaus.topman.com/wcsstore/TopManUS/images/catalog/TM83U09OBLK_Zoom_M_1.jpg',
+    secondaryImage: 'http://mediaus.topman.com/wcsstore/TopManUS/images/catalog/TM83U09OBLK_Zoom_B_1.jpg',
+    price: 60.00,
+    materials: 'Paisley Fabric | Brass Buttons',
+    creator: 'Vivian',
+    created: '10/22/2017',
+    kidsExtraSmallAvail: 0,
+    kidsSmallAvail: 0,
+    kidsMediumAvail: 0,
+    kidsLargeAvail: 0,
+    kidsExtraLargeAvail: 0,
+    extraSmallAvailable: 1,
+    smallAvailable: 1,
+    mediumAvailable: 1,
+    largeAvailable: 0,
+    extraLargeAvailable: 0,
+    xxlAvailable: 0,
+    model: 'Billy Bob',
+    photographer: 'Jilly Job',
+    isWomens: false,
+    isLongSleeve: true,
+    isShift: false,
+    isLuxury: false,
+    isExperimental: false
+  },
+  {
+    slug: 'bold2',
+    title: 'Bold',
+    description: 'Paisley fabric sourced from Denver, CO.',
+    primaryImage: 'http://mediaus.topman.com/wcsstore/TopManUS/images/catalog/TM83U09OBLK_Zoom_M_1.jpg',
+    secondaryImage: 'http://mediaus.topman.com/wcsstore/TopManUS/images/catalog/TM83U09OBLK_Zoom_B_1.jpg',
+    price: 60.00,
+    materials: 'Paisley Fabric | Brass Buttons',
+    creator: 'Vivian',
+    created: '10/22/2017',
+    kidsExtraSmallAvail: 0,
+    kidsSmallAvail: 0,
+    kidsMediumAvail: 0,
+    kidsLargeAvail: 0,
+    kidsExtraLargeAvail: 0,
+    extraSmallAvailable: 1,
+    smallAvailable: 1,
+    mediumAvailable: 1,
+    largeAvailable: 0,
+    extraLargeAvailable: 0,
+    xxlAvailable: 0,
+    model: 'Billy Bob',
+    photographer: 'Jilly Job',
+    isWomens: false,
+    isLongSleeve: true,
+    isShift: false,
+    isLuxury: false,
+    isExperimental: false
+  },
+  {
+    slug: 'wanderlust',
+    title: 'Wanderlust',
+    description: 'Distressed, comfortable knit fabric for the days you just want to get away.',
+    primaryImage: 'https://stylishlyme.com/wp-content/uploads/2014/07/Adding-color-to-denim-outfit-stylishlyme.jpg',
+    secondaryImage: 'https://stylishlyme.com/wp-content/uploads/2014/07/Chambray-Shirt-Dress-Aviators-Stylishlyme.jpg',
+    price: 60.00,
+    materials: 'Knit Fabric | Plastic Buttons',
+    creator: 'Madii',
+    created: '10/27/2017',
+    kidsExtraSmallAvail: 0,
+    kidsSmallAvail: 0,
+    kidsMediumAvail: 0,
+    kidsLargeAvail: 0,
+    kidsExtraLargeAvail: 0,
+    extraSmallAvailable: 0,
+    smallAvailable: 1,
+    mediumAvailable: 1,
+    largeAvailable: 1,
+    extraLargeAvailable: 0,
+    xxlAvailable: 0,
+    model: 'Billy Bob',
+    photographer: 'Jilly Job',
+    isWomens: true,
+    isLongSleeve: false,
+    isShift: false,
+    isLuxury: false,
+    isExperimental: false
+  },
+  {
+    slug: 'pastoral-nouveau',
+    title: 'Pastoral Nouveau',
+    description: 'Half-bleached denim fabric sourced from Denver, CO.',
+    primaryImage: 'http://viuehara.com/wp-content/uploads/2014/03/vini-uehara-mavi-2.jpg',
+    secondaryImage: 'http://viuehara.com/wp-content/uploads/2014/03/vini-uehara-mavi.jpg',
+    price: 70.00,
+    materials: 'Denim Fabric | Copper Buttons',
+    creator: 'Vivian',
+    created: '10/27/2019',
+    kidsExtraSmallAvail: 0,
+    kidsSmallAvail: 0,
+    kidsMediumAvail: 0,
+    kidsLargeAvail: 0,
+    kidsExtraLargeAvail: 0,
+    extraSmallAvailable: 0,
+    smallAvailable: 0,
+    mediumAvailable: 1,
+    largeAvailable: 0,
+    extraLargeAvailable: 0,
+    xxlAvailable: 0,
+    model: 'Billy Bob',
+    photographer: 'Jilly Job',
+    isWomens: false,
+    isLongSleeve: true,
+    isShift: false,
+    isExperimental: true,
+    isLuxury: false
+  },
+  {
+    slug: 'road-trip',
+    title: 'Road Trip',
+    description: 'A lightweight plaid fabric perfect for sunny days on the road.',
+    primaryImage: 'https://cdn.shopify.com/s/files/1/0684/0407/products/2M8A1934.jpg?v=1505344633',
+    secondaryImage: 'https://cdn.shopify.com/s/files/1/0684/0407/products/2M8A1937.jpg?v=1505344633',
+    price: 70.00,
+    materials: 'Plaid Fabric | Plastic Buttons',
+    creator: 'Vivian',
+    created: '8/27/2019',
+    kidsExtraSmallAvail: 0,
+    kidsSmallAvail: 0,
+    kidsMediumAvail: 0,
+    kidsLargeAvail: 0,
+    kidsExtraLargeAvail: 0,
+    extraSmallAvailable: 0,
+    smallAvailable: 1,
+    mediumAvailable: 1,
+    largeAvailable: 1,
+    extraLargeAvailable: 0,
+    xxlAvailable: 0,
+    model: 'Billy Bob',
+    photographer: 'Jilly Job',
+    isWomens: true,
+    isLongSleeve: true,
+    isShift: true,
+    isExperimental: false,
+    isLuxury: false
+  },
+  {
+    slug: 'scouts-honor',
+    title: 'Scout\'s Honor',
+    description: 'The nightlife will be saluting you with this heavy-duty canvas button down with old-school epaulets, and oversized utility pockets.',
+    primaryImage: 'https://cdn.yoox.biz/38/38532146nl_13_a_v4.jpg',
+    secondaryImage: 'https://cdn.yoox.biz/38/38532146nl_13_b_v4.jpg',
+    price: 70.00,
+    materials: 'Cotton Canvas Fabric | Plastic Buttons | Crystal Pyramid Studs',
+    creator: 'Vivian',
+    created: '8/27/2019',
+    kidsExtraSmallAvail: 0,
+    kidsSmallAvail: 0,
+    kidsMediumAvail: 0,
+    kidsLargeAvail: 0,
+    kidsExtraLargeAvail: 0,
+    extraSmallAvailable: 0,
+    smallAvailable: 1,
+    mediumAvailable: 1,
+    largeAvailable: 0,
+    extraLargeAvailable: 0,
+    xxlAvailable: 0,
+    model: 'Billy Bob',
+    photographer: 'Jilly Job',
+    isWomens: true,
+    isLongSleeve: true,
+    isShift: false,
+    isExperimental: true,
+    isLuxury: true
+  },
+  {
+    slug: 'scouts-honor2',
+    title: 'Scout\'s Honor',
+    description: 'The nightlife will be saluting you with this heavy-duty canvas button down with old-school epaulets, and oversized utility pockets.',
+    primaryImage: 'https://cdn.yoox.biz/38/38532146nl_13_a_v4.jpg',
+    secondaryImage: 'https://cdn.yoox.biz/38/38532146nl_13_b_v4.jpg',
+    price: 70.00,
+    materials: 'Cotton Canvas Fabric | Plastic Buttons | Crystal Pyramid Studs',
+    creator: 'Vivian',
+    created: '8/27/2019',
+    kidsExtraSmallAvail: 0,
+    kidsSmallAvail: 0,
+    kidsMediumAvail: 0,
+    kidsLargeAvail: 0,
+    kidsExtraLargeAvail: 0,
+    extraSmallAvailable: 0,
+    smallAvailable: 1,
+    mediumAvailable: 1,
+    largeAvailable: 0,
+    extraLargeAvailable: 0,
+    xxlAvailable: 0,
+    model: 'Billy Bob',
+    photographer: 'Jilly Job',
+    isWomens: true,
+    isLongSleeve: true,
+    isShift: false,
+    isExperimental: true,
+    isLuxury: true
+  },
+  {
+    slug: 'texture',
+    title: 'Texture',
+    description: 'Like you, there\'s way more than meets the eye initially with this shirt. A polo-esque collar, fabric, and straight waist give this shirt a contemporary twist on your typical button-down. Dress it up, dress it down.',
+    primaryImage: 'https://www.forever21.com/images/1_front_750/00241957-01.jpg',
+    secondaryImage: 'https://www.forever21.com/images/3_back_750/00241957-01.jpg',
+    image3: 'https://www.forever21.com/images/2_side_750/00241957-01.jpg',
+    image4: 'https://www.forever21.com/images/4_full_750/00241957-01.jpg',
+    price: 60.00,
+    materials: 'Jersey Material | Plastic Buttons',
+    creator: 'Madii',
+    created: '8/27/2019',
+    kidsExtraSmallAvail: 0,
+    kidsSmallAvail: 0,
+    kidsMediumAvail: 0,
+    kidsLargeAvail: 0,
+    kidsExtraLargeAvail: 0,
+    extraSmallAvailable: 0,
+    smallAvailable: 0,
+    mediumAvailable: 1,
+    largeAvailable: 0,
+    extraLargeAvailable: 0,
+    xxlAvailable: 0,
+    model: 'Billy Bob',
+    photographer: 'Jilly Job',
+    isWomens: false,
+    isLongSleeve: true,
+    isShift: false,
+    isExperimental: true,
+    isLuxury: false
+  }
+
+];
+
+db.sequelize.drop();
+
+db.sequelize.sync({ force: true }).then( () => {
+  shirts.forEach( shirt => {
+      tables.Shirt.create(shirt).then( () => {
+
+      });
+  });
+});

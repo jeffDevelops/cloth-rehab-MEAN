@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from '../http.service';
 
 @Component({
   selector: 'app-women',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WomenComponent implements OnInit {
 
-  constructor() { }
+  constructor(private http: HttpService) { }
+
+  shirts: Array<any>;
 
   ngOnInit() {
+    this.http.getAllWomensShirts().then( shirts => {
+      console.log(shirts);
+      this.shirts = shirts;
+    });
   }
 
 }

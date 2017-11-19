@@ -32,14 +32,14 @@ $font: 'Work Sans', sans-serif;
     display: flex;
     vertical-align: top;
     justify-content: space-between;
-    width: 17%;
+    width: 30%;
     padding: 0;
   }
   .logo_text {
     display: flex;
     vertical-align: top;
     align-items: flex-start;
-    width: 66%;
+    width: 40%;
     a {
       display: block;
       margin: 0 auto;
@@ -53,7 +53,7 @@ $font: 'Work Sans', sans-serif;
     display: flex;
     vertical-align: top;
     justify-content: space-between;
-    width: 17%;
+    width: 30%;
     padding: 0;
   }
 }
@@ -77,7 +77,7 @@ a {
   .nav_container {
     .store_nav,
     .meta_nav {
-      justify-content: space-around;
+      justify-content: space-between;
       width: 35%;
     }
     .logo_text {

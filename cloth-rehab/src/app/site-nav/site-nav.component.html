@@ -6,22 +6,33 @@
     <a
     *ngIf="this.routePath === '/mens'"
     class="disabled"
-    routerLink="/mens">Mens
+    routerLink="/mens">Men<span>s</span>
     </a>
     <a
     *ngIf="this.routePath !== '/mens'"
-    routerLink="/mens">Mens
+    routerLink="/mens">Men<span>s</span>
     </a>
 
     <!-- check URL pathname and disable link accordingly -->
     <a
     *ngIf="this.routePath === '/womens'"
     class="disabled"
-    routerLink="/womens">Womens
+    routerLink="/womens">Women<span>s</span>
     </a>
     <a
     *ngIf="this.routePath !== '/womens'"
-    routerLink="/womens">Womens
+    routerLink="/womens">Women<span>s</span>
+    </a>
+
+    <!-- check URL pathname and disable link accordingly -->
+    <a
+    *ngIf="this.routePath === '/kids'"
+    class="disabled"
+    routerLink="/kids">Kids
+    </a>
+    <a
+    *ngIf="this.routePath !== '/kids'"
+    routerLink="/kids">Kids
     </a>
   </nav>
   <div class="logo_text">
@@ -39,23 +50,23 @@
   <nav class="meta_nav">
     <!-- check URL pathname and disable link accordingly -->
     <a
-    *ngIf="this.routePath === '/about'"
+    *ngIf="this.routePath === '/experimental'"
     class="disabled"
-    routerLink="/about">About
+    routerLink="/experimental">Experimental
     </a>
     <a
-    *ngIf="this.routePath !== '/about'" routerLink="/about">About
+    *ngIf="this.routePath !== '/experimental'" routerLink="/experimental">Experimental
     </a>
 
     <!-- check URL pathname and disable link accordingly -->
     <a
     *ngIf="this.routePath === '/work'"
     class="disabled"
-    routerLink="/work"><span>Past </span>Work
+    routerLink="/work">Luxury
     </a>
     <a
     *ngIf="this.routePath !== '/work'"
-    routerLink="/work"><span>Past </span>Work
+    routerLink="/work">Luxury
     </a>
 
   </nav>

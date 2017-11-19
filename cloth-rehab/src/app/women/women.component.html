@@ -1,2 +1,20 @@
 <app-site-nav></app-site-nav>
+
+<div *ngIf="shirts"
+  class="container">
+
+  <a href="{{shirt.slug}}"
+    *ngFor="let shirt of shirts"
+    class="shirt">
+      <h2>{{shirt.title}}</h2>
+      <div class="image_container"
+        [style.background-image]="'url(' + shirt.primaryImage + ')'"
+        >
+        <div class="hover_image"
+          [style.background-image]="'url(' + shirt.secondaryImage + ')'"
+        ></div>
+      </div>
+  </a>
+</div>
+
 <router-outlet></router-outlet>

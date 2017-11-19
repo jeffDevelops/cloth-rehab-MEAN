@@ -1,0 +1,26 @@
+<app-site-nav></app-site-nav>
+
+<div *ngIf="shirt"
+  class="container">
+  <h2>{{shirt.title}}</h2>
+  <div
+    class="displayed_image"
+    [style.background-image]="'url(' + displayed + ')'"
+    (click)="toggleModal()">
+  </div>
+  <div class="image_previews">
+    <div
+    *ngFor="let preview of previews; let i = index;"
+    class="preview"
+      [style.background-image]="'url(' + previews[i] + ')'"
+    (click)="displaySelected(i)">
+    </div>
+  </div>
+</div>
+<div *ngIf="modalDisplayed"
+  class="modal"
+  (click)="toggleModal()">
+  <div class="modal_image"
+  [style.background-image]="'url(' + displayed + ')'">
+  </div>
+</div>

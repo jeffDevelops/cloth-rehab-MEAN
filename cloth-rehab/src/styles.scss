@@ -15,6 +15,7 @@ body {
   //margin-collapse hack
   display: inline-block;
   width: 100%;
+  height: 100%;
   //margin-collapse hack
   position: relative;
   // min-height: 149px;
@@ -23,11 +24,7 @@ body {
   overflow: auto;
   font-family: $font;
   box-sizing: border-box;
-  background-image: linear-gradient($dark_gray_alpha, $dark_gray_alpha),
-                    url('./assets/sew_machine.jpg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  background: $dark_gray;
 }
 
 // background image position on smaller screens

@@ -1,0 +1,98 @@
+$lt_green: rgb(176, 204, 156);
+$lt_green_alpha: rgba(176, 204, 156, .7);
+$drk_green: rgb(61, 116, 84);
+$drk_green_alpha: rgba(61, 116, 84, .7);
+$dark_gray: rgb(70, 70, 70);
+$red: rgb(192, 72, 63);
+$font: 'Work Sans', sans-serif;
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row wrap;
+  height: 600px;
+  width: 90%;
+  margin: -50px auto;
+}
+
+.shirt {
+  width: 20%;
+  max-width: 400px;
+  height: 600px;
+  text-decoration: none;
+  transition: color .2s;
+  margin: 75px 0 15px 0;
+  &:hover h2 {
+    color: $lt_green;
+    transition: color .4s;
+  }
+  h2 {
+    margin: 20px 0;
+    color: #fff;
+    text-align: left;
+  }
+  .image_container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .hover_image {
+    position: absolute;
+    z-index: 2;
+    opacity: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: opacity .3s;
+    &:hover {
+      z-index: 100;
+      opacity: 1;
+      transition: opacity .5s;
+    }
+  }
+}
+
+@media(max-width: 600px) {
+  .container {
+    margin: 0 auto;
+    display: block;
+  }
+  .shirt {
+    margin: 0 auto;
+    h2 {
+      margin: 50px 0 15px 0;
+    }
+  }
+}
+
+@media(min-width: 601px) and (max-width: 1200px) {
+  .container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 90%;
+    height: 600px;
+  }
+  .shirt {
+    height: 600px;
+    width: 48%;
+    margin: 75px 0 15px 0;
+    .image_container {
+      width: 100%;
+    }
+  }
+}
+
+@media(min-width: 1201px) and (max-width: 1400px) {
+  .shirt {
+    width: 30%;
+  }
+}

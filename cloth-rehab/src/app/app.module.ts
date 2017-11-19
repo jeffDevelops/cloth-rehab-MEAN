@@ -17,6 +17,9 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { SiteNavComponent } from './site-nav/site-nav.component';
 import { WomenComponent } from './women/women.component';
 import { MenComponent } from './men/men.component';
+import { ItemComponent } from './item/item.component';
+
+// Meta
 import { AboutComponent } from './about/about.component';
 import { PastWorkComponent } from './past-work/past-work.component';
 
@@ -26,43 +29,8 @@ import { AuthService } from './auth.service';
 import { PreviewService } from './preview.service';
 import { HttpService } from './http.service';
 
-const appRoutes: Routes = [
-  // Online Store
-  {
-    path: '',
-    component: HomepageComponent
-  },
-  {
-    path: 'womens',
-    component: WomenComponent
-  },
-  {
-    path: 'mens',
-    component: MenComponent
-  },
-  // Meta Business Info
-  {
-    path: 'about',
-    component: AboutComponent
-  },
-  {
-    path: 'work',
-    component: PastWorkComponent
-  },
-  // Admin Portal
-  { path: 'admin',
-    component: AdminComponent
-  },
-  {
-    path: 'callback',
-    component: CallbackComponent
-  },
-  {
-    path: 'admin/home',
-    component: AdminHomeComponent,
-    canActivate: [ AuthGuard ]
-  }
-];
+// Routes
+import { appRoutes } from './routes';
 
 @NgModule({
   declarations: [
@@ -75,6 +43,7 @@ const appRoutes: Routes = [
     SiteNavComponent,
     WomenComponent,
     MenComponent,
+    ItemComponent,
     AboutComponent,
     PastWorkComponent,
   ],
