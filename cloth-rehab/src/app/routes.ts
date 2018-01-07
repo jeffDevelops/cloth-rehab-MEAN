@@ -32,10 +32,6 @@ export const appRoutes: Routes = [
     path: 'mens',
     component: MenComponent
   },
-  {
-    path: ':slug',
-    component: ItemComponent
-  },
   // Meta Business Info
   {
     path: 'about',
@@ -57,5 +53,9 @@ export const appRoutes: Routes = [
     path: 'admin/home',
     component: AdminHomeComponent,
     canActivate: [ AuthGuard ]
-  }
+  },
+  {
+    path: ':slug',
+    component: ItemComponent
+  },
 ];

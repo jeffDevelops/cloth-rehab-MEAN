@@ -13,6 +13,9 @@ export class ItemComponent implements OnInit {
   shirtName = this.pathname.slice(1, this.pathname.length);
   shirt;
 
+  // Sizes Available
+  sizesAvailable = [];
+
   // Images
   displayed;
   previews = [];
@@ -45,6 +48,39 @@ export class ItemComponent implements OnInit {
       }
       if (this.shirt.image4) {
         this.previews.push(this.shirt.image4);
+      }
+      if (this.shirt.kidsExtraSmallAvail > 0) {
+        this.sizesAvailable.push('Kids XS');
+      }
+      if (this.shirt.kidsSmallAvail > 0) {
+        this.sizesAvailable.push('Kids S');
+      }
+      if (this.shirt.kidsMediumAvail > 0) {
+        this.sizesAvailable.push('Kids M');
+      }
+      if (this.shirt.kidsLargeAvail > 0) {
+        this.sizesAvailable.push('Kids L');
+      }
+      if (this.shirt.kidsExtraLargeAvail > 0) {
+        this.sizesAvailable.push('Kids XL');
+      }
+      if (this.shirt.extraSmallAvailable > 0) {
+        this.sizesAvailable.push('XS');
+      }
+      if (this.shirt.smallAvailable > 0) {
+        this.sizesAvailable.push('S');
+      }
+      if (this.shirt.mediumAvailable > 0) {
+        this.sizesAvailable.push('M');
+      }
+      if (this.shirt.largeAvailable > 0) {
+        this.sizesAvailable.push('L');
+      }
+      if (this.shirt.extraLargeAvailable > 0) {
+        this.sizesAvailable.push('XL');
+      }
+      if (this.shirt.xxlAvailable > 0) {
+        this.sizesAvailable.push('XXL');
       }
     });
   }

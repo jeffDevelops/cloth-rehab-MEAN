@@ -2,21 +2,35 @@
 
 <div *ngIf="shirt"
   class="container">
-  <h2>{{shirt.title}}</h2>
-  <div
-    class="displayed_image"
-    [style.background-image]="'url(' + displayed + ')'"
-    (click)="toggleModal()">
-  </div>
-  <div class="image_previews">
+  <div class="images_container">
     <div
-    *ngFor="let preview of previews; let i = index;"
-    class="preview"
-      [style.background-image]="'url(' + previews[i] + ')'"
-    (click)="displaySelected(i)">
+      class="displayed_image"
+      [style.background-image]="'url(' + displayed + ')'"
+      (click)="toggleModal()">
+    </div>
+    <div class="image_previews">
+      <div
+      *ngFor="let preview of previews; let i = index;"
+      class="preview"
+        [style.background-image]="'url(' + previews[i] + ')'"
+      (click)="displaySelected(i)">
+      </div>
+    </div>
+  </div>
+  <div class="info_container">
+    <h2>{{shirt.title}}</h2>
+    <h1>{{shirt.materials}}</h1>
+    <p>{{shirt.description}}</p>
+    <h2 class="sizes_available">Sizes Available</h2>
+    <div class="button_container">
+      <button
+        *ngFor="let size of sizesAvailable"
+        class="size_button"
+      >{{size}}</button>
     </div>
   </div>
 </div>
+
 <div *ngIf="modalDisplayed"
   class="modal"
   (click)="toggleModal()">
